@@ -50,6 +50,8 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL:'https://localhost:44332/api/'
+
   },
   /*
   ** vuetify module configuration
@@ -88,6 +90,17 @@ export default {
     host:'0.0.0.0'
   },
   auth: {
-    // Options
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/users/login', method: 'post', propertyName: 'accessToken' },
+          logout: false,
+          user: { url: '/users/GetUserByAccessToken', method: 'get', propertyName: false}
+        },
+        // tokenRequired: false,
+        tokenType: 'bearer',
+        //autoFetchUser: true
+      }
+    }
   }
 }

@@ -7,8 +7,13 @@
     >
 
       <v-app-bar-nav-icon @click="drawer = !drawer" />
+      <span link to="/">
       <span class="title ml-3 mr-5">Dofus&nbsp;<span class="font-weight-light">Shop</span></span>
-      <v-text-field
+      </span>
+      <v-btn icon fab mx-2>
+        <v-icon>mdi-account</v-icon>
+      </v-btn>
+        <v-text-field
         solo-inverted
         flat
         hide-details
@@ -16,20 +21,20 @@
         class="mr-5"
       />
 
-      <v-container>
-        <v-layout row>
-          <v-list-item two-line :class="miniVariant && 'px-0'">
-            <v-list-item-avatar>
-              <img src="https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-9/13466152_1194024830637592_6664884706672312489_n.jpg?_nc_cat=108&_nc_sid=85a577&_nc_ohc=Ny3B59OkCMMAX9Iyr8X&_nc_ht=scontent-cdg2-1.xx&oh=33bedacfa3557c6d81a05422e0139346&oe=5ED92E4A">
-            </v-list-item-avatar>
+      <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role==='Utilisateur'">Utilisateur</v-btn>
+      <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role==='Admin'">Admin</v-btn>
+      <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role==='Commercial'">Commercial</v-btn>
+      <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role==='Editeur'">Editeur</v-btn>
 
-            <v-list-item-content>
-              <v-list-item-title>Compte</v-list-item-title>
-              <v-list-item-subtitle>Subtext</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-        </v-layout>
-      </v-container>
+      <div v-if="this.$auth.loggedIn">
+        Vous êtes connecté {{this.$auth.user.email}}
+        <v-btn text @click="logout">Deconnexion</v-btn>
+      </div>
+      <div v-if="!this.$auth.loggedIn">
+        Vous n'etes pas connecté
+        <v-btn text to="/login">Connexion</v-btn>
+        <v-btn text to="/register">Inscription</v-btn>
+      </div>
 
     </v-app-bar>
 
