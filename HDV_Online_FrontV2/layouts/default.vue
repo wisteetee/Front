@@ -83,11 +83,16 @@
     data: () => ({
       drawer: null,
       items: [
-        { icon:'mdi-home', text: 'Tableau de bord', route:'/Accueil' },
+        { icon:'mdi-home', text: 'Accueil', route:'/' },
         { icon: 'mdi-cart-arrow-down', text: 'Commandes', route:'/commandes' },
         { icon: 'mdi-account', text: 'Clients', route:'/clients' },
         { icon: 'mdi-folder-search-outline', text: 'Produits', route:'/produits' },
       ],
     }),
+    methods:{
+      async logout(){
+        await this.$auth.logout()
+      }
+    }
   }
 </script>
