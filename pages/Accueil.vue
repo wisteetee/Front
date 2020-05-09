@@ -18,18 +18,16 @@
 
       <v-container>
         <v-layout row>
-          <v-flex xs12 md6>
             <v-list-item two-line :class="miniVariant && 'px-0'">
               <v-list-item-avatar>
                 <img src="https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-9/13466152_1194024830637592_6664884706672312489_n.jpg?_nc_cat=108&_nc_sid=85a577&_nc_ohc=Ny3B59OkCMMAX9Iyr8X&_nc_ht=scontent-cdg2-1.xx&oh=33bedacfa3557c6d81a05422e0139346&oe=5ED92E4A">
               </v-list-item-avatar>
 
               <v-list-item-content>
-                <v-list-item-title>Application</v-list-item-title>
+                <v-list-item-title>Compte</v-list-item-title>
                 <v-list-item-subtitle>Subtext</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
-          </v-flex>
         </v-layout>
       </v-container>
 
@@ -101,21 +99,22 @@
     </v-navigation-drawer>
 
     <v-content>
-      <v-container
+      <v-content
         fluid
         class="grey lighten-4 fill-height"
       >
-        <v-data-table
-          :headers="headers"
-          :items="desserts"
-          class="elevation-1"
-        >
-          <template v-slot:item.calories="{ item }">
-            <v-chip :color="getColor(item.calories)" dark>{{ item.calories }}</v-chip>
-          </template>
-        </v-data-table>z
+       <v-container  class="mt-5"><v-data-table
+         :headers="headers"
+         :items="desserts"
+         class="elevation-1"
+       >
+         <template v-slot:item.calories="{ item }">
+           <v-chip :color="getColor(item.calories)" dark>{{ item.calories }}</v-chip>
+         </template>
+       </v-data-table></v-container>
 
-      </v-container>
+
+      </v-content>
     </v-content>
   </v-app>
 </template>
