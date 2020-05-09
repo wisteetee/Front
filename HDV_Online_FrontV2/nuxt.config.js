@@ -43,6 +43,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/auth'
   ],
   /*
   ** Axios module configuration
@@ -85,5 +86,8 @@ export default {
   server:{
     port:3000,
     host:'0.0.0.0'
+  },
+  auth: {
+    // Options
   }
 }

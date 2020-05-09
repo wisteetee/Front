@@ -2,36 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb49098a-dfa7-4080-97fa-b4ab3689818e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/variables.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Logo.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/VuetifyLogo.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/default.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/error.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nuxt.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/Accueil.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/clients.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/commandes.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/inspire.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/produits.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/v.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/vuetify-logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HDV_Online_FrontV2/pages/Accueil.vue" beforeDir="false" afterPath="$PROJECT_DIR$/HDV_Online_FrontV2/pages/Accueil.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +40,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1589036711207</updated>
-      <workItem from="1589036712331" duration="2240000" />
+      <workItem from="1589036712331" duration="3659000" />
     </task>
     <servers />
   </component>
