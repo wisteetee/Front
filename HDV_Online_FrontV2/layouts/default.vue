@@ -20,14 +20,20 @@
         label="Search"
         class="mr-5"
       />
-
-      <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role==='Utilisateur'">Utilisateur</v-btn>
-      <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role==='Admin'">Admin</v-btn>
-      <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role==='Commercial'">Commercial</v-btn>
-      <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role==='Editeur'">Editeur</v-btn>
-
+      <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role.nomRole==='Administrateur'">Dashboard Admin</v-btn>
+      <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role.nomRole==='Commercial'">Dashboard Commercial</v-btn>
+      <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role.nomRole==='Editeur'">Dashboard Editeur</v-btn>
+      <v-btn
+        icon
+        fab
+        class="mx-2"
+        v-if="this.$auth.loggedIn"
+        link to="/commandes"
+      >
+        <v-icon>mdi-cart</v-icon>
+      </v-btn>
       <div v-if="this.$auth.loggedIn">
-        Vous êtes connecté {{this.$auth.user.email}}
+        Vous êtes connecté en tant que {{this.$auth.user.role.nomRole}}
         <v-btn text @click="logout">Deconnexion</v-btn>
       </div>
       <div v-if="!this.$auth.loggedIn">
@@ -67,6 +73,7 @@
         </template>
       </v-list>
     </v-navigation-drawer>
+    <v-content>
 
 
     <nuxt/>

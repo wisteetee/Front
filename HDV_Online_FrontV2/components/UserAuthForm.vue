@@ -5,11 +5,11 @@
                   :rules="[required('name')]"
                   v-if="hasName" />
 
-    <v-text-field v-model="userInfo.email"
+    <v-text-field v-model="userInfo.Email"
                   label="Email"
                   :rules="[required('email'), emailFormat()]"/>
 
-    <v-text-field v-model="userInfo.password"
+    <v-text-field v-model="userInfo.Password"
                   label="Password"
                   :type="showPassword ? 'text' : 'password'"
                   :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
@@ -30,8 +30,8 @@
         valid: false,
         showPassword: false,
         userInfo: {
-          email: '',
-          password: ''
+          Email: '',
+          Password: ''
         },
         ...validations
       }
