@@ -32,6 +32,7 @@
       methods: {
         async loginUser(logininfo) {
           try{
+            console.log(logininfo)
              await this.$auth.loginWith('local',{
               data:logininfo
             })

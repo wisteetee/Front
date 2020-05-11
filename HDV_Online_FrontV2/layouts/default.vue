@@ -26,20 +26,20 @@
         class="mr-5"
       />
 
-      <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role==='Admin'">Dashboard Admin</v-btn>
-      <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role==='Commercial'">Dashboard Commercial</v-btn>
-      <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role==='Editeur'">Dashboard Editeur</v-btn>
+      <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role.nomRole==='Administrateur'">Dashboard Admin</v-btn>
+      <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role.nomRole==='Commercial'">Dashboard Commercial</v-btn>
+      <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role.nomRole==='Editeur'">Dashboard Editeur</v-btn>
       <v-btn
         icon
         fab
         class="mx-2"
-        v-if="this.$auth.loggedIn && this.$auth.user.role!=='Editeur' || this.$auth.user.role!=='Admin'"
+        v-if="this.$auth.loggedIn"
         link to="/commandes"
       >
         <v-icon>mdi-cart</v-icon>
       </v-btn>
       <div v-if="this.$auth.loggedIn">
-        Vous êtes connecté en tant que {{this.$auth.user.role}}
+        Vous êtes connecté en tant que {{this.$auth.user.role.nomRole}}
         <v-btn text @click="logout">Deconnexion</v-btn>
       </div>
       <div v-if="!this.$auth.loggedIn">
