@@ -68,8 +68,10 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-content>
+
       <nuxt/>
+
+
     </v-content>
   </v-app>
 </template>
@@ -81,18 +83,25 @@
       source: String,
     },
     data: () => ({
+      icons: [
+        'mdi-facebook',
+        'mdi-twitter',
+        'mdi-linkedin',
+        'mdi-instagram',
+      ],
       drawer: null,
       items: [
-        { icon:'mdi-home', text: 'Accueil', route:'/' },
+        { icon:'mdi-home', text: 'Accueil', route:'/accueil' },
         { icon: 'mdi-cart-arrow-down', text: 'Commandes', route:'/commandes' },
         { icon: 'mdi-account', text: 'Clients', route:'/clients' },
         { icon: 'mdi-folder-search-outline', text: 'Produits', route:'/produits' },
       ],
+
     }),
     methods:{
       async logout(){
         await this.$auth.logout()
       }
-    }
+    },
   }
 </script>
