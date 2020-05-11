@@ -1,5 +1,5 @@
 <template>
-  <container>
+  <v-container>
     <v-carousel :show-arrows="false">
       <v-carousel-item
         v-for="(item,i) in itemsCarousel"
@@ -111,7 +111,7 @@
 
       </v-card>
     </v-footer>
-  </container>
+  </v-container>
 </template>
 
 <script>

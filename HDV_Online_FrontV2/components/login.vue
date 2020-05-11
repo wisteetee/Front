@@ -1,6 +1,11 @@
 <template>
-    <v-container>
-      <h1 class="text-center">Connexion</h1>
+      <v-row justify="center">
+        <v-dialog v-model="dialog" persistent max-width="600px" @click:outside="dialog=false" >
+          <template v-slot:activator="{ on }">
+            <v-btn text v-on="on">Connexion</v-btn>
+          </template>
+          <div style="background-color: white" class="px-2 py-2">
+          <h1 class="text-center">Connexion</h1>
       <UserAuthForm button-text="Connexion" :submitForm="loginUser"/>
       <v-snackbar
       :timeout="timeout"
@@ -9,11 +14,13 @@
       >
         {{snakbar.text}}
       </v-snackbar>
-    </v-container>
+          </div>
+        </v-dialog>
+      </v-row>
 </template>
 
 <script>
-  import UserAuthForm from "../components/UserAuthForm";
+  import UserAuthForm from "./UserAuthForm";
     export default {
         name: "login",
       components:{
@@ -21,6 +28,7 @@
       },
       data(){
           return{
+            dialog:false,
             timeout:2000,
             snakbar:{
               display:false,
