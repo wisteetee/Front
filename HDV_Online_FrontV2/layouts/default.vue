@@ -7,25 +7,19 @@
     >
 
       <v-app-bar-nav-icon @click="drawer = !drawer" />
-      <v-btn text depressed to="/">
+      <span link to="/">
       <span class="title ml-3 mr-5">Dofus&nbsp;<span class="font-weight-light">Shop</span></span>
-      </v-btn>
-      <v-btn
-        icon
-        fab
-        class="mx-2"
-        v-if="this.$auth.loggedIn"
-      >
+      </span>
+      <v-btn icon fab mx-2>
         <v-icon>mdi-account</v-icon>
       </v-btn>
-        <v-text-field
+      <v-text-field
         solo-inverted
         flat
         hide-details
         label="Search"
         class="mr-5"
       />
-
       <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role.nomRole==='Administrateur'">Dashboard Admin</v-btn>
       <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role.nomRole==='Commercial'">Dashboard Commercial</v-btn>
       <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role.nomRole==='Editeur'">Dashboard Editeur</v-btn>
@@ -66,7 +60,6 @@
             :key="i"
             link
             :to="item.route"
-            :v-if="item.condition"
           >
             <v-list-item-action>
               <v-icon>{{ item.icon }}</v-icon>
@@ -80,9 +73,12 @@
         </template>
       </v-list>
     </v-navigation-drawer>
-
     <v-content>
-      <nuxt/>
+
+
+    <nuxt/>
+
+
     </v-content>
   </v-app>
 </template>
@@ -94,18 +90,25 @@
       source: String,
     },
     data: () => ({
+      icons: [
+        'mdi-facebook',
+        'mdi-twitter',
+        'mdi-linkedin',
+        'mdi-instagram',
+      ],
       drawer: null,
       items: [
-        { icon:'mdi-home', text: 'Accueil', route:'/'},
-        { icon: 'mdi-cart-arrow-down', text: 'Commandes', route:'/commandes'},
-        { icon: 'mdi-account', text: 'Clients', route:'/clients'},
-        { icon: 'mdi-folder-search-outline', text: 'Produits', route:'/produits'},
+        { icon:'mdi-home', text: 'Accueil', route:'/accueil' },
+        { icon: 'mdi-cart-arrow-down', text: 'Commandes', route:'/commandes' },
+        { icon: 'mdi-account', text: 'Clients', route:'/clients' },
+        { icon: 'mdi-folder-search-outline', text: 'Produits', route:'/produits' },
       ],
+
     }),
     methods:{
       async logout(){
         await this.$auth.logout()
       }
-    }
+    },
   }
 </script>
