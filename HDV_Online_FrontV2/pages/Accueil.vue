@@ -1,117 +1,116 @@
 <template>
-  <container>
-    <v-carousel :show-arrows="false">
-      <v-carousel-item
-        v-for="(item,i) in itemsCarousel"
-        :key="i"
-        :src="item.src"
-      ></v-carousel-item>
-    </v-carousel>
+    <v-container class="pr-6">
+      <v-carousel :show-arrows="false">
+        <v-carousel-item
+          v-for="(item,i) in itemsCarousel"
+          :key="i"
+          :src="item.src"
+        ></v-carousel-item>
+      </v-carousel>
 
-    <v-container fluid>
-      <tbody>
-      <v-system-bar style="width: 1920px">Top Fournitures</v-system-bar>
+      <v-container fluid>
+        <tbody>
+        <v-system-bar style="width: 1725px">Top Fournitures</v-system-bar>
 
-      <v-container class="my-5">
-        <v-layout row>
-          <v-flex md3 v-for="(produit) in itemsVente" :key="produit.title">
-            <v-card
-              style="height: 350px;"
-              class="ml-5 mt-3 mx-auto my-8"
-              max-width="400"
 
-            >
-              <v-img
-                height="200px"
-                src="require('produit.img')"
-              ></v-img>
+          <v-layout row>
+            <v-flex md3 v-for="(produit) in itemsVente" :key="produit.title">
+              <v-card
+                style="height: 350px;"
+                class="ml-5 mx-auto my-8"
+                max-width="400"
 
-              <v-card-title>
-                {{ produit.titre }}
-              </v-card-title>
+              >
+                <v-img
+                  height="200px"
+                  src="require('produit.img')"
+                ></v-img>
 
-              <v-card-subtitle>
-                {{ produit.description}}
-              </v-card-subtitle>
-              <v-card-text>PRIX: {{produit.prix}}€</v-card-text>
-            </v-card>
-          </v-flex>
-        </v-layout>
+                <v-card-title>
+                  {{ produit.titre }}
+                </v-card-title>
+
+                <v-card-subtitle>
+                  {{ produit.description}}
+                </v-card-subtitle>
+                <v-card-text>PRIX: {{produit.prix}}€</v-card-text>
+              </v-card>
+            </v-flex>
+          </v-layout>
+
+        <v-system-bar style="width: 1725px">Produits à bas prix</v-system-bar>
+
+
+          <v-layout row class="my-5">
+            <v-flex md4 v-for="(produit) in itemsVentePromo" :key="produit.title">
+              <v-card
+                style="height: 350px;"
+                class="ml-5 mt-3 mx-auto"
+                max-width="500"
+
+              >
+                <v-img
+                  height="200px"
+                  src="require('produit.img')"
+                ></v-img>
+
+                <v-card-title>
+                  {{ produit.titre }}
+                </v-card-title>
+
+                <v-card-subtitle>
+                  {{ produit.description}}
+                </v-card-subtitle>
+                <v-card-text>PRIX: {{produit.prix}}€</v-card-text>
+              </v-card>
+            </v-flex>
+          </v-layout>
+
+
+        <v-row style="height: 1000px;">
+
+        </v-row>
+
+        </tbody>
+
       </v-container>
 
-      <v-system-bar style="width: 1920px">Produits à bas prix</v-system-bar>
-
-      <v-container class="my-5">
-        <v-layout row>
-          <v-flex md4 v-for="(produit) in itemsVentePromo" :key="produit.title">
-            <v-card
-              style="height: 350px;"
-              class="ml-5 mt-3 mx-auto my-8"
-              max-width="500"
-
-            >
-              <v-img
-                height="200px"
-                src="require('produit.img')"
-              ></v-img>
-
-              <v-card-title>
-                {{ produit.titre }}
-              </v-card-title>
-
-              <v-card-subtitle>
-                {{ produit.description}}
-              </v-card-subtitle>
-              <v-card-text>PRIX: {{produit.prix}}€</v-card-text>
-            </v-card>
-          </v-flex>
-        </v-layout>
-      </v-container>
 
 
-      <v-row style="height: 1000px;">
-
-      </v-row>
-
-      </tbody>
-
-    </v-container>
-
-
-
-    <v-footer
-      dark
-      padless
-    >
-      <v-card
-        flat
-        tile
-        class="orange lighten-1 white--text text-center"
+      <v-footer
+        dark
+        padless
       >
-        <v-card-text>
-          <v-btn
-            v-for="icon in icons"
-            :key="icon"
-            class="mx-4 white--text"
-            icon
-          >
-            <v-icon size="24px">{{ icon }}</v-icon>
-          </v-btn>
-        </v-card-text>
+        <v-card
+          flat
+          tile
+          class="orange lighten-1 white--text text-center"
+        >
+          <v-card-text>
+            <v-btn
+              v-for="icon in icons"
+              :key="icon"
+              class="mx-4 white--text"
+              icon
+            >
+              <v-icon size="24px">{{ icon }}</v-icon>
+            </v-btn>
+          </v-card-text>
 
-        <v-card-text class="white--text pt-0">
-          © 2020 CesiCorp. Tous droits réservés.Conditions d'utilisation - Politique de confidentialité - Conditions Générales de Vente - Mentions Légales - Gestion des cookies contenucontenucontenucontenucontenucontenucontenucontenucontenucontenucontenucontenucontenucontenucontenucontenucontenu
-        </v-card-text>
+          <v-card-text class="white--text pt-0">
+            © 2020 CesiCorp. Tous droits réservés.En vous inscrivant sur DOFUS, vous vous engagez à respecter un certain nombre de règles. Celles-ci sont là pour maintenir une ambiance conviviale et optimiser le confort de jeu de chaque joueur. Dans le cas où un joueur choisit de contrevenir à ces règles, il doit savoir qu'il s'expose à des sanctions.
+          </v-card-text>
 
-        <v-divider></v-divider>
+          <v-divider></v-divider>
 
-        <v-card-text class="white--text">
-          {{ new Date().getFullYear() }} — <strong>DofusSHOP</strong>
-        </v-card-text>
+          <v-card-text class="white--text">
+            {{ new Date().getFullYear() }} — <strong>DofusSHOP</strong>
+          </v-card-text>
 
-      </v-card>
-    </v-footer>
-  </container>
+        </v-card>
+
+      </v-footer>
+  </v-container>
 </template>
 
 <script>
