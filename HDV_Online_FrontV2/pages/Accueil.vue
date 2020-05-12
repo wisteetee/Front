@@ -124,7 +124,7 @@
       ],
       itemsCarousel: [
         {
-          src: 'https://static.ankama.com/ankama/cms/images/23/2019/02/27/978522.jpg',
+          src: 'https://cdn1.ankama-shop.com/3076-thickbox_default/affiche-ilyzaelle-relief-effet-dore.jpg',
         },
         {
           src: 'https://wallpapercave.com/wp/wp3076909.jpg',
