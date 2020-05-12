@@ -1,27 +1,34 @@
 <template>
   <v-container fluid>
 
+
+
+
     <v-data-table
       :headers="headers"
       :items="ListeCommande"
-      :single-expand="singleExpand"
-      :expanded.sync="expanded"
-      item-key="name"
-      show-expand
+      :search="search"
       class="elevation-1 pt-6 mt-6"
     >
       <template v-slot:top>
         <v-toolbar flat>
-          <v-toolbar-title>Commandes</v-toolbar-title>
+          <v-toolbar-title>Mes commandes</v-toolbar-title>
           <v-spacer></v-spacer>
         </v-toolbar>
       </template>
-      <template v-slot:expanded-item="{ headers, item }">
-        <td :colspan="headers.length">More info about {{ item.name }}</td>
+
+      <template v-slot:body="{ items }">
+        <tbody>
+        <tr v-for="item in ListeCommande" @click="displayItem(item)">
+          <td>{{item.nomPays}} </td>
+          <td>{{item.client}}</td>
+          <td>{{item.date}}</td>
+          <td>{{item.montant}}</td>
+          <td>{{item.etat}}</td>
+        </tr>
+        </tbody>
       </template>
     </v-data-table>
-
-
   </v-container>
 </template>
 
@@ -63,31 +70,21 @@
             { text: 'Montant', value: 'montant' },
             { text: 'Etat', value: 'etat' },
           ],
-
-          desserts: [
-            {
-              name: '1',
-              client: "1",
-              date: 6.0,
-              montant: 24,
-              etat: 4.0,
-            },
-            {
-              name: '2',
-              client: 159,
-              date: 6.0,
-              montant: 24,
-              etat: 4.0,
-            },
-            ],
           ListeCommande: [],
+          CommandeId:null,
         }
+      },
+      methods:{
+        displayItem (item) {
+          console.log(item),
+            this.CommandeId = this.ListeCommande.indexOf(item)
+        },
       },
       mounted() {
         this.$axios.$get('https://localhost:5001/api/Pays')
           .then(response => this.ListeCommande=response)
           .then(response => console.log(response))
           .catch(error => console.log(error))
-      }
+      },
     }
 </script>
