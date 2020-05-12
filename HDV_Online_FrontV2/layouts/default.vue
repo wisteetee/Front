@@ -37,9 +37,14 @@
         <v-btn text @click="logout">Deconnexion</v-btn>
       </div>
       <div v-if="!this.$auth.loggedIn">
-        Vous n'etes pas connecté
-        <v-btn text to="/login">Connexion</v-btn>
-        <v-btn text to="/register">Inscription</v-btn>
+        <v-row>
+          <v-col cols="6">
+        <login/>
+          </v-col>
+          <v-col cols="6">
+        <register/>
+          </v-col>
+        </v-row>
       </div>
 
     </v-app-bar>
@@ -74,18 +79,24 @@
       </v-list>
     </v-navigation-drawer>
     <v-content>
-
-
     <nuxt/>
-
-
     </v-content>
+    <v-bottom-navigation background-color="amber"><contact/></v-bottom-navigation>
   </v-app>
 </template>
 
 
 <script>
+  import contact from "../components/contact";
+  import login from "../components/login";
+  import register from "../components/register";
+
   export default {
+    components:{
+      contact,
+      login,
+      register
+    },
     props: {
       source: String,
     },

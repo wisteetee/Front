@@ -74,7 +74,6 @@
         </v-row>
 
         </tbody>
-
       </v-container>
       <v-footer
         dark
@@ -125,6 +124,7 @@
       ],
       itemsCarousel: [
         {
+
           src: 'wallpaper/carrousel1.jpg',
         },
         {
