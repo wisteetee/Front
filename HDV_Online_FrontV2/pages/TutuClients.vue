@@ -13,14 +13,14 @@
         :headers="headers"
         :items="clients"
         :search="search"
-        v-on:click:row="dialogClients = !dialogClients"
+        v-on:click:row="dialogClient = !dialogClient"
       >
         <template v-slot:body="{ items }">
           <tbody>
-          <tr v-for="item in items" @click="clientsId=(item.Id)-1, dialogClients=!dialogClients" :key="item.id">
+          <tr v-for="item in items" :key="item.id" @click="clientId=(item.id-1), dialogClient=!dialogClient">
             <td>{{item.nomClient}}</td>
             <td>{{item.prenomClient}}</td>
-            <td>{{item.nomClient}}</td>
+            <td>{{item.prenomClient}}</td>
           </tr>
           </tbody>
         </template>
@@ -28,10 +28,10 @@
     </v-card>
 
     <v-row justify="center">
-      <v-dialog v-model="dialogClients" persistent max-width="900px" v-on:click:outside="dialogClients=false" v-if="clientsId!=null">
+      <v-dialog v-model="dialogClient" persistent max-width="900px" v-on:click:outside="dialogClient=false" v-if="clientId!=null">
         <v-card>
           <v-toolbar flat color="primary" dark>
-            <v-toolbar-title>{{clients[clientsId].ville}}</v-toolbar-title>
+            <v-toolbar-title>{{civils}}</v-toolbar-title>
           </v-toolbar>
           <v-tabs vertical>
             <v-tab>
@@ -50,11 +50,7 @@
             <v-tab-item>
               <v-card flat>
                 <v-card-text>
-                  <p>{{clients[clientsId].ville}} {{clients[clientsId].ville}} {{clients[clientsId].ville}}</p>
-                  <p>Née le {{clients[clientsId].ville}}</p>
-                  <p> Nationalitée : {{clients[clientsId].ville}}</p>
-                  <p> Habite à {{clients[clientsId].ville}}</p>
-
+                  <p>{{clients}}</p>
                 </v-card-text>
               </v-card>
             </v-tab-item>
@@ -70,7 +66,7 @@
                       </v-list-item-action>
 
                       <v-list-item-content>
-                        <v-list-item-title>Portable : {{clients[clientsId].ville}}</v-list-item-title>
+                        <v-list-item-title>Portable : </v-list-item-title>
                       </v-list-item-content>
                       <v-list-item-action>
 
@@ -78,13 +74,13 @@
                       </v-list-item-action>
                     </v-list-item>
 
-                    <v-list-item @click="" v-for="coordonnee in civils[civilId].Coordonnees" :key="coordonnee.id">
+                    <v-list-item @click="" >
                       <v-list-item-action>
                         <v-icon>mdi-phone</v-icon>
                       </v-list-item-action>
 
-                      <v-list-item-content>
-                        <v-list-item-title>Fixe : {{clients[clientsId].ville}}</v-list-item-title>
+                      <v-list-item-content >
+                        <v-list-item-title>Fixe : {{coordonnee}} </v-list-item-title>
                       </v-list-item-content>
 
                       <v-list-item-action>
@@ -92,28 +88,10 @@
                       </v-list-item-action>
                     </v-list-item>
 
-                    <v-divider inset></v-divider>
-                    <v-list-item-title class="text-center mt-2">Adresse</v-list-item-title>
 
-                    <v-list-item @click="" v-for="coordonnee in civils[civilId].Coordonnees" :key="coordonnee.id">
-                      <v-list-item-action>
-                        <v-icon>mdi-map-marker</v-icon>
-                      </v-list-item-action>
 
-                      <v-list-item-content>
-                        <v-list-item-title>{{clients[clientsId].ville}} {{clients[clientsId].ville}}</v-list-item-title>
-                      </v-list-item-content>
-                    </v-list-item>
 
-                    <v-list-item @click="">
-                      <v-list-item-action>
-                        <v-icon>mdi-map-marker</v-icon>
-                      </v-list-item-action>
 
-                      <v-list-item-content>
-                        <v-list-item-title>{{clients[clientsId].ville}} {{clients[clientsId].ville}} {{clients[clientsId].ville}}</v-list-item-title>
-                      </v-list-item-content>
-                    </v-list-item>
                   </v-list>
                 </v-card-text>
               </v-card>
@@ -129,6 +107,7 @@
         </v-card>
       </v-dialog>
     </v-row>
+
   </v-container>
 </template>
 
@@ -137,20 +116,23 @@
   export default {
     data () {
       return {
+        listeClients:[],
+        Coordonnees:'',
+        Ville:'',
         search: '',
         headers: [
           {
-            text: 'Nom',
+            text: 'Ville',
             align: 'start',
             filterable: false,
-            value: 'nom',
+            value: 'ville',
           },
-          { text: 'Nom du client', value: 'nomClient' },
-          { text: 'Prénom du client', value: 'PrenomClient' },
+          { text: 'Nom', value: 'nomClient' },
+          { text: 'Prenom', value: 'prenomClient' }
         ],
         clients: [],
-        dialogClients: false,
-        clientsId: null
+        dialogClient: false,
+        clientId: null
       }
     },
     methods:{
