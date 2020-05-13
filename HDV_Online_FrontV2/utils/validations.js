@@ -1,11 +1,11 @@
 let required = (propertyType) => {
-  return v => v && v.length > 0 || `You must input a ${propertyType}`
+  return v => v && v.length > 0 || `Vous devez entrer un ${propertyType}`
 }
 let minLength = (propertyType, minLength) => {
-  return v => v && v.length >= minLength || `${propertyType} must be at least ${minLength} characters`
+  return v => v && v.length >= minLength || `${propertyType} doit faire au moins ${minLength} caracteres`
 }
 let maxLength = (propertyType, maxLength) => {
-  return v => v && v.length <= maxLength || `${propertyType} must be less than ${maxLength} characters`
+  return v => v && v.length <= maxLength || `${propertyType} doit faire plus que ${maxLength} caracteres`
 }
 
 let emailFormat = () => {

@@ -38,7 +38,7 @@
             </v-flex>
           </v-layout>
 
-        <v-system-bar style="width: 1725px">Produits à bas prix</v-system-bar>
+        <v-system-bar style="width: 100%">Produits à bas prix</v-system-bar>
 
 
           <v-layout row class="my-5">
@@ -74,7 +74,6 @@
         </v-row>
 
         </tbody>
-
       </v-container>
       <v-footer
         dark
@@ -125,6 +124,7 @@
       ],
       itemsCarousel: [
         {
+
           src: 'wallpaper/carrousel1.jpg',
         },
         {
@@ -139,9 +139,9 @@
       ],
       itemsVente: [
         {titre:'Top vente de bois Dofus', description:'1000 unités de bois', prix:'10',src:'bucherons/chataigner.png'},
-        {titre:'Top vente de minerais Dofus', description:'1000 unités de minerais', prix:'15',src:'mineur/argent.png'},
-        {titre:'Top vente de fer Dofus', description:'1000 unités de fer', prix:'20',src:'mineur/fer.png'},
-        {titre:'Top vente d\'or Dofus', description:"1000 unités d\'or", prix:'25',src:'mineur/or.png'},
+        {titre:'Top vente de minerais Dofus', description:'1000 unités de minerais', prix:'15',src:'mineur/ARGENT.png'},
+        {titre:'Top vente de fer Dofus', description:'1000 unités de fer', prix:'20',src:'mineur/FER.png'},
+        {titre:'Top vente d\'or Dofus', description:"1000 unités d\'or", prix:'25',src:'mineur/OR.png'},
         ],
       itemsVentePromo: [
         {titre:'Pack bois + ressources', description:'1000 unités de bois + 1000 unités de minerais + 1000 kamas', prix:'50',src:'pack_bois_1.png'},
