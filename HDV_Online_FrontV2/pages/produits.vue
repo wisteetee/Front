@@ -52,18 +52,6 @@
       </div>
       </v-col>
     </v-row>
-
-
-
-
-    <v-data-table
-      :headers="headers"
-      :items="listeProduits"
-      :items-per-page="5"
-      class="elevation-1"
-    ></v-data-table>
-
-
   </v-container>
 </template>
 
@@ -132,7 +120,7 @@
 
       },
       mounted() {
-        this.$axios.$get('https://localhost:5001/api/CategorieProduits')
+        this.$axios.$get('https://localhost:44391/api/CategorieProduits')
           .then(response => this.Categoriesproduits=response)
           .then(response => console.log(response))
           .catch(error => console.log(error))
