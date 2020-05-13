@@ -44,20 +44,11 @@
              await this.$auth.loginWith('local',{
               data:logininfo
             })
-            this.snakbar.display=true,
-            this.snakbar.text='Connexion réussie'
-            //this.$store.dispatch('snackbar/setSnackbar', {color:'success' ,text:'Connexion réussie'})
-            //await this.$router.push('/')
+            this.$store.dispatch('snackbar/setSnackbar', {color:'success' ,text:'Connexion réussie'})
+            this.$router.push('/')
           }catch(error){
-            this.snakbar.display=true,
-            this.snakbar.text='Connexion échouée, veuillez recommencer'
-            this.snakbar.color='error'
-
-            //this.$store.dispatch('snackbar/setSnackbar', {color: 'error', text: 'Il y a eu un probleme lors de votre tentative de connexion, veuillez réessayer'})
+            this.$store.dispatch('snackbar/setSnackbar', {color: 'error', text: 'Il y a eu un probleme lors de votre tentative de connexion, veuillez réessayer'})
           }
-
-          //alert('Vous essayez de vous connecter')
-
         }
       }
     }
