@@ -8,10 +8,7 @@
       ></v-carousel-item>
     </v-carousel>
     <v-container fluid style="width: 100%">
-
       <v-system-bar style="width: 100%">Top Fournitures</v-system-bar>
-
-
       <v-layout row>
         <v-flex md3 v-for="(produit) in itemsVente" :key="produit.title">
           <v-card
@@ -37,16 +34,13 @@
           </v-card>
         </v-flex>
       </v-layout>
-
       <v-system-bar style="width: 100%">Produits à bas prix</v-system-bar>
-
-
       <v-layout row class="my-5">
         <v-flex md4 v-for="(produit) in itemsVentePromo" :key="produit.title">
           <v-card
             style="height: 350px;"
             class="ml-5 mt-8 mx-auto"
-            max-width="500"
+            max-width="400"
           >
             <v-img
               height="200px"
@@ -68,7 +62,6 @@
         </v-flex>
       </v-layout>
       <v-system-bar style="width: 100%">Maxi Pack</v-system-bar>
-
       <v-layout row>
         <v-flex md4 v-for="(produit) in itemsVentePack" :key="produit.title">
           <v-card
@@ -94,9 +87,6 @@
           </v-card>
         </v-flex>
       </v-layout>
-
-
-  
     </v-container>
     <v-footer
       dark
