@@ -49,7 +49,7 @@
             <td>{{item.prix}} €</td>
             <td>{{item.quantiteProd}}</td>
             <td>{{item.descriptionProduit}}</td>
-            <td><v-model ><v-btn v-on:click="decrement" rounded small><v-icon>mdi-minus</v-icon></v-btn> {{ ListeProduit.indexOf(item) }} <v-btn rounded small v-on:click="increment"><v-icon>mdi-plus</v-icon></v-btn></v-model></td>
+            <td><v-model ><v-btn v-on:click="decrement" rounded small><v-icon>mdi-minus</v-icon></v-btn> {{ BtnValue[ListeProduit.indexOf(item)] }} <v-btn rounded small v-on:click="increment"><v-icon>mdi-plus</v-icon></v-btn></v-model></td>
           </tr>
         </tbody>
       </template>
@@ -114,9 +114,9 @@
           ListeProduit: [],
           CommandeId:null,
           BtnValue:[
-            {index: 0, value: 0},
-            {index: 1, value: 1},
-            {index: 2, value: 2}
+            {value:0},
+            {value: 1},
+            {value: 2}
           ],
         }
       },
@@ -129,6 +129,7 @@
 
         },
         increment() {
+
           this.BtnValue++;
 
         },
