@@ -5,7 +5,6 @@
       clipped-left
       color="amber"
     >
-
       <v-app-bar-nav-icon @click="drawer = !drawer" />
       <span link to="/">
       <span class="title ml-3 mr-5">Dofus&nbsp;<span class="font-weight-light">Shop</span></span>
@@ -20,7 +19,7 @@
         label="Search"
         class="mr-5"
       />
-      <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role.nomRole==='Administrateur'">Dashboard Admin</v-btn>
+      <v-btn text to="/dashboardAdmin" v-if="this.$auth.loggedIn">Dashboard Admin</v-btn>
       <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role.nomRole==='Commercial'">Dashboard Commercial</v-btn>
       <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role.nomRole==='Editeur'">Dashboard Editeur</v-btn>
       <v-btn
@@ -46,9 +45,7 @@
           </v-col>
         </v-row>
       </div>
-
     </v-app-bar>
-
     <v-navigation-drawer
       v-model="drawer"
       app
@@ -81,6 +78,7 @@
     <v-content>
     <nuxt/>
     </v-content>
+    <snackbar/>
     <v-bottom-navigation background-color="amber"><contact/></v-bottom-navigation>
   </v-app>
 </template>
@@ -90,12 +88,14 @@
   import contact from "../components/contact";
   import login from "../components/login";
   import register from "../components/register";
+  import snackbar from "../components/snackbar";
 
   export default {
     components:{
       contact,
       login,
-      register
+      register,
+      snackbar
     },
     props: {
       source: String,

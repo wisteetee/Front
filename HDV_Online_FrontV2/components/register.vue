@@ -27,7 +27,7 @@
     },
     methods:{
       async registerUser(registrationinfo){
-        await this.$axios.post('/users', registrationinfo)
+        await this.$axios.post('/utilisateurs', registrationinfo)
         await this.$auth.loginWith('local',{
           data:registrationinfo
         })
