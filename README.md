@@ -2,7 +2,7 @@
 
 Etape 1 : cloner le projet
 
-git clone https://github.com/RICHARD-Quentin/Projet_Avengers.git
+git clone https://github.com/wisteetee/Front
 
 Etape 2 : lancer docker, attendre la notification "docker is running"
 
@@ -19,7 +19,7 @@ docker run --rm -it \
                  bash
 bash-5.0#
 
-Etape 5 : se placer dans le projet : cd ProjetAvengers
+Etape 5 : se placer dans le projet : cd HDV_Online_FrontV2
 
 Etape 6 : taper la commande : yarn dev
 
