@@ -1,13 +1,19 @@
 <template>
-
+  <v-layout
+    column
+    justify-center
+    align-center
+  >
+  </v-layout>
 </template>
 
 <script>
-    export default {
-        name: "produits"
+  import Logo from '~/components/Logo.vue'
+  import VuetifyLogo from '~/components/VuetifyLogo.vue'
+  export default {
+    components: {
+      Logo,
+      VuetifyLogo
     }
+  }
 </script>
-
-<style scoped>
-
-</style>

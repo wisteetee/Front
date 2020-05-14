@@ -9,7 +9,7 @@
       <span link to="/">
       <span class="title ml-3 mr-5">Dofus&nbsp;<span class="font-weight-light">Shop</span></span>
       </span>
-      <v-btn icon fab mx-2>
+      <v-btn icon fab mx-2 to="/persoUtilisateur">
         <v-icon>mdi-account</v-icon>
       </v-btn>
       <v-text-field
@@ -19,7 +19,7 @@
         label="Search"
         class="mr-5"
       />
-      <v-btn text to="/dashboardAdmin" v-if="this.$auth.loggedIn">Dashboard Admin</v-btn>
+      <v-btn text to="/dashboardAdmin" v-if="this.$auth.loggedIn && this.$auth.user.role.nomRole==='Administrateur'" >Dashboard Admin</v-btn>
       <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role.nomRole==='Commercial'">Dashboard Commercial</v-btn>
       <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role.nomRole==='Editeur'">Dashboard Editeur</v-btn>
       <v-btn
