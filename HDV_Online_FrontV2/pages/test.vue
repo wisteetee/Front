@@ -79,12 +79,12 @@
         </template>
       </v-data-table>
     </v-form>
+    {{this.$auth.user.client.id}}
   </v-container>
 </template>
 
 <script>
   export default {
-    middleware:'auth',
     name: "commandes",
 
     data () {
@@ -157,13 +157,13 @@
           PrixTotalLigne:this.ProduitSelectionne.prix*this.ListeProduit.QuantiteCommande
         })
         this.TotalCommande=0,
-          this.Commande.forEach(element => this.TotalCommande+=element.Total)
+        this.Commande.forEach(element => this.TotalCommande+=element.Total)
         /* this.$refs.form.reset()*/
       },
       produitSelectionneRequete(){
         var url= '/produits/'+this.IdProduitSelectionne
         this.$axios.$get(url)
-          .then(response => this.ProduitSelectionne=response)
+        .then(response => this.ProduitSelectionne=response)
       },
       envoisCommande(){
         this.$axios.$post('/commandes',{
@@ -171,17 +171,17 @@
           ClientId:this.$auth.user.client.id,
           PrixTotalCommande:this.TotalCommande
         })
-          .then(this.CommandeBdd.forEach(element =>
-            this.$axios.$post('/produitscommandes', element)
-          ))
+        .then(this.CommandeBdd.forEach(element =>
+          this.$axios.$post('/produitscommandes', element)
+        ))
       },
 
     },
     mounted() {
-      /*      this.$axios.$get('/produits')
-              .then(response => this.Produits=response)
-              .then(response => console.log(response))
-              .catch(error => console.log(error))*/
+/*      this.$axios.$get('/produits')
+        .then(response => this.Produits=response)
+        .then(response => console.log(response))
+        .catch(error => console.log(error))*/
 
       this.$axios.$get('/categorieproduits')
         .then(response => this.CategorieProduit=response)

@@ -63,6 +63,8 @@
         hover: false,
         Categoriesproduits: [],
         IdCategorieProduit: null,
+
+        ]
         active: false
       }
     },
