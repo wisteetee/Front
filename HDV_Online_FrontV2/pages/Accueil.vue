@@ -165,7 +165,7 @@
       ],
       itemsVentePack: [
         {titre:'Pack bois + ressources', description:'1000 unités de bois + 1000 unités de minerais + 1000 kamas', prix:'50',src:'pack_bois_1.png'},
-        {titre:'Top vente de bois Dofus', description:'100 unités de bois', prix:'100',src:'pack_3.png'},
+        {titre:'pack Ultime Dofus', description:'1000 unités de bois + 1000 unités de minerais + 5000 kamas + armes', prix:'100',src:'pack_3.png'},
         {titre:'Pack bois + minerais + arme légendaire', description:'100 unités de fer, 100 bois, 1 arme légendaire', prix:'20',src:'pack_2.png'},
       ],
       show: false,
