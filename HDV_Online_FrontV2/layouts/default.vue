@@ -12,14 +12,10 @@
       <v-btn icon fab mx-2 to="/persoUtilisateur">
         <v-icon>mdi-account</v-icon>
       </v-btn>
-      <v-text-field
-        solo-inverted
-        flat
-        hide-details
-        label="Search"
-        class="mr-5"
-      />
+
+      <v-spacer></v-spacer>
       <v-btn text to="/dashboardAdmin" v-if="this.$auth.loggedIn && this.$auth.user.role.nomRole==='Administrateur'" >Dashboard Admin</v-btn>
+      <v-btn text to="/dashboardManager" v-if="this.$auth.loggedIn && this.$auth.user.role.nomRole==='Manager'" >Dashboard Manager</v-btn>
       <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role.nomRole==='Commercial'">Dashboard Commercial</v-btn>
       <v-btn text to="/" v-if="this.$auth.loggedIn && this.$auth.user.role.nomRole==='Editeur'">Dashboard Editeur</v-btn>
       <v-btn
@@ -109,10 +105,10 @@
       ],
       drawer: null,
       items: [
-        { icon:'mdi-home', text: 'Accueil', route:'/accueil' },
+        { icon:'mdi-home', text: 'Accueil', route:'/' },
+        { icon: 'mdi-folder-search-outline', text: 'Produits', route:'/produits' },
         { icon: 'mdi-cart-arrow-down', text: 'Commandes', route:'/commandes' },
         { icon: 'mdi-account', text: 'Clients', route:'/clients' },
-        { icon: 'mdi-folder-search-outline', text: 'Produits', route:'/produits' },
       ],
 
     }),

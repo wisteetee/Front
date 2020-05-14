@@ -2,7 +2,7 @@
   <v-container>
   <v-container v-if="this.$auth.user.client===null">
     <v-form
-    v-model="valid"
+    ref="form"
     >
       <v-row>
         <v-col cols="4">
@@ -24,7 +24,6 @@
 
         <v-menu
         ref="menu"
-        :rules="[required('')]"
         v-model="menu"
         :close-on-content-click="false"
         transition="scale-transition"
@@ -41,7 +40,6 @@
         </template>
         <v-date-picker
           ref="picker"
-          :rules="[required('Date de naissance')]"
           v-model="InfoClient.DateDeNaissance"
           :max="new Date().toISOString().substr(0, 10)"
           min="1950-01-01"
@@ -67,45 +65,7 @@
       ></v-text-field>
         </v-col>
       </v-row>
-      <!--Coordonnées-->
-      <v-text-field
-        v-model="CoordoneeClient.Adresse"
-        placeholder="Adresse"
-        :rules="[required('Adresse')]"
-      ></v-text-field>
-      <v-row>
-        <v-col cols="4">
-      <v-text-field
-        v-model="CoordoneeClient.Code_Postal"
-        placeholder="Code Postal"
-        :rules="[required('Code Postal')]"
-      ></v-text-field>
-        </v-col>
-        <v-col cols="4">
-
-        <v-text-field
-        v-model="CoordoneeClient.Ville"
-        placeholder="Ville"
-        :rules="[required('Ville')]"
-      ></v-text-field>
-        </v-col>
-        <v-col cols="4">
-
-        <v-select
-        placeholder="Pays"
-        :rules="[required('Pays')]"
-        :items="Pays"
-        item-text="nomPays"
-        item-value="id"
-        v-model="CoordoneeClient.PaysId"
-        ></v-select>
-        </v-col>
-
-      </v-row>
-      <v-checkbox v-model="CoordoneeClient.Facturation" label="Adresse de facturation"></v-checkbox>
-      <v-checkbox v-model="CoordoneeClient.Livraison" label="Adresse de livraison"></v-checkbox>
-
-      <v-btn @click="envoisFormulaire" :disabled="valid">Envoyer</v-btn>
+      <v-btn @click="envoisFormulaire">Envoyer</v-btn>
     </v-form>
   </v-container>
   <v-container v-else>
@@ -120,34 +80,75 @@
     <v-system-bar style="width: 100%" class="mt-5"></v-system-bar>
 
     <h2>Coordonnées</h2><br>
+
     <div v-for="item in DashboardInfo">
       <p>{{item.adresse}}</p>
       <p>{{item.code_Postal}} {{item.ville}}</p>
       <p>{{item.pays.nomPays}}</p>
     </div>
 
+    <v-form v-if="this.$auth.user.client.coordonnees">
+      <!--Coordonnées-->
+      <v-text-field
+        v-model="CoordoneeClient.Adresse"
+        placeholder="Adresse"
+        :rules="[required('Adresse')]"
+      ></v-text-field>
+      <v-row>
+        <v-col cols="4">
+          <v-text-field
+            v-model="CoordoneeClient.Code_Postal"
+            placeholder="Code Postal"
+            :rules="[required('Code Postal')]"
+          ></v-text-field>
+        </v-col>
+        <v-col cols="4">
+          <v-text-field
+            v-model="CoordoneeClient.Ville"
+            placeholder="Ville"
+            :rules="[required('Ville')]"
+          ></v-text-field>
+        </v-col>
+        <v-col cols="4">
+          <v-select
+            placeholder="Pays"
+            :items="Pays"
+            item-text="nomPays"
+            item-value="id"
+            v-model="CoordoneeClient.PaysId"
+          ></v-select>
+        </v-col>
+
+      </v-row>
+      <v-checkbox v-model="CoordoneeClient.Facturation" label="Adresse de facturation"></v-checkbox>
+      <v-checkbox v-model="CoordoneeClient.Livraison" label="Adresse de livraison"></v-checkbox>
+
+      <v-btn @click="envoisCoordonees">Envoyer</v-btn>
+    </v-form>
+
+
+
     <v-system-bar style="width: 100%" class="mt-5"></v-system-bar>
 
     <h2 align-content="center">Mes commandes</h2>
-    <v-row>
+    <v-row v-if="Commandes!==null">
       <v-col v-for="commande in Commandes" cols="4">
         <v-card class="mt-2">
-          <v-card-title>Commande n° {{commande.id}}</v-card-title>
+          <v-card-title >Commande n° {{commande.id}}</v-card-title>
           <v-card-subtitle>Faite le {{commande.dateCommande.substr(0,10)}}</v-card-subtitle>
           <v-row>
-            <v-col v-for="produit in commande.produitsCommandes" cols="6">
-              <v-card-text >
-                <p v-for="infoProduit in produit" v-if="infoProduit.id==produit.idProduit">{{infoProduit.nomProduit}} {{infoProduit.prix}}€/u Qté : {{produit.quantite}} Prix : {{produit.prixTotalLigne}}€</p>
+            <v-col  v-for="produit in commande.produitsCommandes" cols="12">
+              <v-card-text align="center" class="px-0 py-0" v-for="(index, key) in produit.produit">
+                <p class="my-0" v-if="key==='nomProduit'">{{index}} <br> Qté: {{produit.quantite}} unitées Total: {{produit.prixTotalLigne}}€</p>
               </v-card-text>
             </v-col>
           </v-row>
-          <v-card-text>
+          <v-card-text align="center" >
             Total : {{commande.prixTotalCommande}}€
           </v-card-text>
         </v-card>
       </v-col>
     </v-row>
-
   </v-container>
   </v-container>
 </template>
@@ -158,7 +159,6 @@
         name: "persoUtilisateur",
       data(){
           return{
-            valid:false,
             dateActuelle:new Date().toISOString().substr(0,10),
             menu:false,
             date:null,
@@ -171,7 +171,6 @@
               NumeroPortable:'',
               DateCreationCompte:new Date().toISOString().substr(0,10),
               UtilisateurId:this.$auth.user.id,
-
             },
             CoordoneeClient:{
               ClientId:'',
@@ -196,10 +195,25 @@
         save (date) {
           this.$refs.menu.save(date)
         },
-        envoisFormulaire(){
-          this.$axios.$post('/clients', this.InfoClient)
-          .then(response => this.CoordoneeClient.ClientId=response.id)
-          .then(this.$axios.$post('/coordonnees', this.CoordoneeClient))
+        async envoisFormulaire(){
+          try{
+            await this.$axios.$post('/clients', this.InfoClient)
+              .then(response => this.CoordoneeClient.ClientId=response.id)
+            await this.$router.push('/persoUtilisateur')
+            await this.$store.dispatch('snackbar/setSnackbar', {color:'success' ,text:'Formulaire envoyé'})
+          }catch {
+            this.$store.dispatch('snackbar/setSnackbar', {color:'error' ,text:'Formulaire non envoyé, veuillez réessayer'})
+          }
+        },
+        envoisCoordonees(){
+          try{
+            this.$axios.$post('/coordonnees', this.CoordoneeClient)
+            this.router.push('/persoUtilisateur')
+
+          }catch {
+            this.$store.dispatch('snackbar/setSnackbar', {color:'error' ,text:'Formulaire non envoyé, veuillez réessayer'})
+
+          }
         }
       },
       mounted() {
@@ -210,6 +224,7 @@
             .then(response => this.DashboardInfo=response)
           this.$axios.$get('/commandes/client/'+this.$auth.user.client.id)
             .then(response => this.Commandes=response)
+          this.CoordoneeClient.ClientId=this.$auth.user.client.id
         }
 
       }

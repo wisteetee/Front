@@ -58,7 +58,7 @@
           <v-toolbar flat>
             <v-toolbar-title>Ma commandes</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn right @click="envoisCommande">Valider la commande</v-btn>
+            <v-btn right @click="envoisCommande" :disabled="Commande.length===0">Valider la commande</v-btn>
           </v-toolbar>
         </template>
 
@@ -84,7 +84,7 @@
 
 <script>
   export default {
-    middleware:'auth',
+    middleware:'auth-basic',
     name: "commandes",
 
     data () {
@@ -138,6 +138,7 @@
       }
     },
     methods:{
+
       ajouter(){
         this.$axios.$get('/commandes/last')
           .then(response => this.lastCommande=response)
@@ -158,31 +159,34 @@
         })
         this.TotalCommande=0,
           this.Commande.forEach(element => this.TotalCommande+=element.Total)
-        /* this.$refs.form.reset()*/
       },
+
       produitSelectionneRequete(){
         var url= '/produits/'+this.IdProduitSelectionne
         this.$axios.$get(url)
           .then(response => this.ProduitSelectionne=response)
       },
+
       envoisCommande(){
-        this.$axios.$post('/commandes',{
-          DateCommande:this.dateActuelle,
-          ClientId:this.$auth.user.client.id,
-          PrixTotalCommande:this.TotalCommande
-        })
-          .then(this.CommandeBdd.forEach(element =>
-            this.$axios.$post('/produitscommandes', element)
-          ))
+        try{
+          this.$axios.$post('/commandes',{
+            DateCommande:this.dateActuelle,
+            ClientId:this.$auth.user.client.id,
+            PrixTotalCommande:this.TotalCommande
+          })
+            .then(this.CommandeBdd.forEach(element =>
+              this.$axios.$post('/produitscommandes', element)
+            ))
+          this.$store.dispatch('snackbar/setSnackbar', {color:'success' ,text:'Formulaire envoyé'})
+          this.Commande=[]
+          this.TotalCommande=0
+        }catch{
+          this.$store.dispatch('snackbar/setSnackbar', {color:'error' ,text:'Formulaire non envoyé, veuillez réessayer'})
+        }
       },
-
     },
-    mounted() {
-      /*      this.$axios.$get('/produits')
-              .then(response => this.Produits=response)
-              .then(response => console.log(response))
-              .catch(error => console.log(error))*/
 
+    mounted() {
       this.$axios.$get('/categorieproduits')
         .then(response => this.CategorieProduit=response)
         .then(response => console.log(response))

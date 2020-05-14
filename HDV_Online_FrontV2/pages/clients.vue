@@ -130,7 +130,7 @@
 
 <script>
   export default {
-    middleware:'auth-admin',
+    middleware:'auth-non-utilisateur',
 
     data () {
       return {

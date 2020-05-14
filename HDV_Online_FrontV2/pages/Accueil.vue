@@ -138,15 +138,15 @@
         },
       ],
       itemsVente: [
-        {titre:'Top vente de bois Dofus', description:'1000 unités de bois', prix:'10',src:'bucherons/chataigner.png'},
-        {titre:'Top vente de minerais Dofus', description:'1000 unités de minerais', prix:'15',src:'mineur/ARGENT.png'},
-        {titre:'Top vente de fer Dofus', description:'1000 unités de fer', prix:'20',src:'mineur/FER.png'},
-        {titre:'Top vente d\'or Dofus', description:"1000 unités d\'or", prix:'25',src:'mineur/OR.png'},
+        {titre:'Top vente de bois Dofus', description:'1000 unités de bois', prix:'10',src:'chataigner.png'},
+        {titre:'Top vente de minerais Dofus', description:'1000 unités de minerais', prix:'15',src:'ARGENT.png'},
+        {titre:'Top vente de fer Dofus', description:'1000 unités de fer', prix:'20',src:'FER.png'},
+        {titre:'Top vente d\'or Dofus', description:"1000 unités d\'or", prix:'25',src:'OR.png'},
         ],
       itemsVentePromo: [
         {titre:'Pack bois + ressources', description:'1000 unités de bois + 1000 unités de minerais + 1000 kamas', prix:'50',src:'pack_bois_1.png'},
-        {titre:'Top vente de bois Dofus', description:'100 unités de bois', prix:'10',src:'bucherons/chene.png'},
-        {titre:'Top vente de bois Dofus', description:'100 unités de fer', prix:'20',src:'bucherons/noyer.png'},
+        {titre:'Top vente de bois Dofus', description:'100 unités de bois', prix:'10',src:'chene.png'},
+        {titre:'Top vente de bois Dofus', description:'100 unités de fer', prix:'20',src:'noyer.png'},
       ],
 
       show: false,

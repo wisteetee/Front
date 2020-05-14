@@ -6,21 +6,21 @@
                   :rules="[required('email'), emailFormat()]"/>
 
     <v-text-field v-model="userInfo.Password"
-                  label="Password"
+                  label="Mot de passe"
                   :type="showPassword ? 'text' : 'password'"
                   :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                   @click:append="showPassword = !showPassword"
                   counter=true
-                  :rules="[required('mot de passe'), minLength('mot de passe', 8)]"
+                  :rules="[required('mot de passe'), minLength('mot de passe', 4)]"
     />
 
     <v-text-field v-model="userInfo.name"
-                  label="Confirm Password"
+                  label="Confirmez le mot de passe"
                   :type="showPassword ? 'text' : 'password'"
                   :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                   @click:append="showPassword = !showPassword"
                   counter=true
-                  :rules="[required('password'), minLength('password', 8)]"
+                  :rules="[required('password'), minLength('password', 4), v => v===this.userInfo.Password || 'Correspondance incorrect avec le mot de passe saisis']"
                   v-if="hasPasswordConfirm" />
 
     <v-btn @click="submitForm(userInfo)" :disabled="!valid">{{buttonText}}</v-btn>

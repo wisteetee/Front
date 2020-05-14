@@ -27,6 +27,7 @@
 <script>
     export default {
         name: "dashboardManager",
+      middleware:'auth-manager',
       data(){
           return{
             Commandes:[]

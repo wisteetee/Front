@@ -1,6 +1,6 @@
 <template>
   <v-row justify="center">
-    <v-dialog v-model="dialog" persistent max-width="600px" @click:outside="dialog=false">
+    <v-dialog v-model="dialog" max-width="600px" @click:outside="dialog=false">
       <template v-slot:activator="{ on }">
         <v-btn text v-on="on">Nous contacter</v-btn>
       </template>
@@ -81,23 +81,31 @@
       },
       methods:{
         async submit(){
-          if(!this.$auth.loggedIn){
-          await this.$axios.$post('/contacts',
-          this.contactForm
-          ).then(response => console.log(response))
-            .catch(error => console.log(error)),
-            await this.$refs.form.reset()
-          }else{
-            this.contactForm.UtilisateurId=this.$auth.user.id
-            this.contactForm.NomContact=this.$auth.user.client.nomClient
-            this.contactForm.PrenomContact=this.$auth.user.client.prenomClient
-            this.contactForm.EmailContact=this.$auth.user.email
-            await this.$axios.$post('/contacts',
-              this.contactForm
-            ).then(response => console.log(response))
-              .catch(error => console.log(error)),
-              await this.$refs.form.reset()
+          try {
+            if (!this.$auth.loggedIn) {
+              await this.$axios.$post('/contacts',
+                this.contactForm
+              ).then(response => console.log(response))
+                .catch(error => console.log(error)),
+                await this.$refs.form.reset()
+            } else {
+              this.contactForm.UtilisateurId = this.$auth.user.id
+              this.contactForm.NomContact = this.$auth.user.client.nomClient
+              this.contactForm.PrenomContact = this.$auth.user.client.prenomClient
+              this.contactForm.EmailContact = this.$auth.user.email
+              await this.$axios.$post('/contacts',
+                this.contactForm
+              ).then(response => console.log(response))
+                .catch(error => console.log(error)),
+                await this.$refs.form.reset()
+            }
+             this.dialog = false
+             this.$store.dispatch('snackbar/setSnackbar', {color: 'success', text: 'Formulaire envoyé'})
+          }catch{
+            this.$store.dispatch('snackbar/setSnackbar', {color: 'error', text: 'Erreur de formulaire, veuillez réessayer'})
           }
+
+
         },
         async vider(){
           await this.$refs.form.reset()
