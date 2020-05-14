@@ -1,11 +1,16 @@
 <template>
- <h1>DASHBOARD ADMIN</h1>
+ <h2>Dashboard Admin</h2>
 </template>
 
 <script>
     export default {
       middleware:'auth-admin',
-        name: "dashboardAdmin"
+        name: "dashboardAdmin",
+      data(){
+        return{
+
+        }
+      }
     }
 </script>
 
